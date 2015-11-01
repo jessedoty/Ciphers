@@ -1,7 +1,15 @@
-# Ciphers
-Within the Geocaching community hints are commonly given in the form of encoded messages.
-The most common encoding method I've seen is the ROT 13 version of the Caesar cipher. 
+#Ciphers
+Within the Geocaching community hints are commonly given in the form of encoded messages. The most common encoding method I've seen is the ROT 13 version of the Caesar cipher. I thought it would be fun to implement a more general Caesar cipher and some other ciphers.  
 
-This implementation allows for any amount of rotation however, with 13 being the default.
+Explanations of the ciphers implemented so far can be found below.
 
-I plan to add implementations of other ciphers in the future.
+##Caesar Cipher:
+
+https://en.wikipedia.org/wiki/Caesar_cipher
+
+##Vigenere Cipher: 
+
+https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
+
+
+More to come...
