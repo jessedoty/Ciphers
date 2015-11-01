@@ -1,17 +1,21 @@
 /**
  * Caesar Cipher:
- * A substitution cipher where a given letter's index (starting at A = 0) is rotated right 13 places
+ * A substitution cipher where a given letter's index (starting at A = 0) is rotated right x places
  * and replaced with the letter at that index.
+ *  
+ * Example with a rotation of 23 (as seen on Wikipedia):
+ * Plaintext:    ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ * Ciphertext: 	 XYZABCDEFGHIJKLMNOPQRSTUVW
  */
 public class Caesar extends Cipher {
-	private int shiftAmt; 
+	private int rotAmt; 
 	
 	/** 
 	 * Constructor
 	 * @param shiftAmt 
 	 */
-	public Caesar(int shiftAmt) {
-		this.shiftAmt = shiftAmt;
+	public Caesar(int rotAmt) {
+		this.rotAmt = rotAmt;
 	}
 	
 	/**
@@ -23,9 +27,9 @@ public class Caesar extends Cipher {
 
 	
 	/**
-	 * Encodes the given data and returns the encoded result  
+	 * Encodes the given input
 	 * @param input
-	 * @return 
+	 * @return encoded result
 	 */
 	public String encode(String input) {
 		String result = "";
@@ -36,7 +40,7 @@ public class Caesar extends Cipher {
 				result += curr ;
 				continue;
 			}
-			int newIndex = (index + shiftAmt) % modulus;
+			int newIndex = (index + rotAmt) % modulus;
 			result += alphabet[newIndex];
 		}
 		return result;

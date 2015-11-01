@@ -4,7 +4,17 @@ import java.util.Scanner;
  * Driver for cipher classes
  */
 public class CipherDriver {
-	public static void main(String[] args) {
+	public static void main(String args[]) {
+		Cipher cipher = build(args);
+		run(cipher);
+	}
+	
+	/**
+	 * Handles argument checks and builds cipher object
+	 * @param args
+	 * @return cipher object
+	 */
+	public static Cipher build(String args[]) {
 		if(args.length < 1 || args.length > 2) {
 			printUsage();
 		}
@@ -24,18 +34,17 @@ public class CipherDriver {
 		else{
 			printUsage();
 		}
-		
-		run(cipher);
+		return cipher;
 	}
 	
 	/**
-	 * Encodes/Decodes given input until the user wants to quit
+	 * Encodes given input until the user wants to quit
 	 * @param c
 	 */
 	public static void run(Cipher c) {
 		Scanner scan = new Scanner(System.in);
 		while(true) {
-			System.out.println("Enter text to be encoded/decoded (q! to quit): ");
+			System.out.println("Enter text to be encoded (q! to quit): ");
 			String plainText = scan.nextLine();
 			
 			if(plainText.equalsIgnoreCase("q!")) {
@@ -50,7 +59,7 @@ public class CipherDriver {
 	
 	/**
 	 * Usage instructions
-	 * /
+	 */
 	public static void printUsage() {
 		System.out.println("Usage: ");
 		System.out.println("$java CipherDriver [-c|-v] <shift amount | key>");
