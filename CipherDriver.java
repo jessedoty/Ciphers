@@ -5,9 +5,35 @@ import java.util.Scanner;
  */
 public class CipherDriver {
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		if(args.length < 1 || args.length > 2) {
+			printUsage();
+		}
 		
-		Caesar c = new Caesar();
+		Cipher cipher = null;
+		if(args[0].equals("-c")) {
+			if(args[1] != null) {
+				cipher = new Caesar(Integer.parseInt(args[1]));
+			}
+			else {
+				cipher = new Caesar();
+			}
+		}
+		else if(args[0].equals("-v")) {
+			cipher = new Vigenere(args[1]);
+		}
+		else{
+			printUsage();
+		}
+		
+		run(cipher);
+	}
+	
+	/**
+	 * Encodes/Decodes given input until the user wants to quit
+	 * @param c
+	 */
+	public static void run(Cipher c) {
+		Scanner scan = new Scanner(System.in);
 		while(true) {
 			System.out.println("Enter text to be encoded/decoded (q! to quit): ");
 			String plainText = scan.nextLine();
@@ -20,5 +46,13 @@ public class CipherDriver {
 			String cipherText = c.encode(plainText);
 			System.out.println(cipherText);
 		}
+	}
+	
+	public static void printUsage() {
+		System.out.println("Usage: ");
+		System.out.println("$java CipherDriver [-c|-v] <shift amount | key>");
+		System.out.println("-c : use caesar cipher. a shift amount is optional with this cipher (13 by default)");
+		System.out.println("-v : use vigenere cipher. a key is needed with this cipher");
+		System.exit(1);
 	}
 }
