@@ -4,12 +4,23 @@
  * and replaced with the letter at that index.
  */
 public class Caesar extends Cipher {
-	private final int ROT13; // Rotate 13 
+	private int shiftAmt; 
 	
-	/** Constructor */
-	public Caesar() {
-		ROT13 = 13;
+	/** 
+	 * Constructor
+	 * @param shiftAmt 
+	 */
+	public Caesar(int shiftAmt) {
+		this.shiftAmt = shiftAmt;
 	}
+	
+	/**
+	 * Constructor - default shift of 13
+	 */
+	public Caesar() {
+		new Caesar(13);
+	}
+
 	
 	/**
 	 * Encodes the given data and returns the encoded result  
@@ -25,7 +36,7 @@ public class Caesar extends Cipher {
 				result += curr ;
 				continue;
 			}
-			int newIndex = (index + ROT13) % modulus;
+			int newIndex = (index + shiftAmt) % modulus;
 			result += alphabet[newIndex];
 		}
 		return result;

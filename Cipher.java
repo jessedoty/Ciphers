@@ -13,12 +13,22 @@ public class Cipher {
 	 * @param var
 	 * @return index of given letter, -1 if not found
 	 */
-	public int indexOf(String var) {
+	protected int indexOf(String var) {
 		for(int i = 0; i<alphabet.length; i++) {
 			if(var.equalsIgnoreCase(alphabet[i])) {
 				return i;
 			}
 		}
 		return -1;
+	}
+	
+	/**
+	 * Default encode method.
+	 * Needed so children can be declared as Cipher objects
+	 * @param input
+	 * @return input
+	 */
+	public String encode(String input) {
+		return input;
 	}
 }
