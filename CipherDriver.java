@@ -48,6 +48,9 @@ public class CipherDriver {
 		}
 	}
 	
+	/**
+	 * Usage instructions
+	 * /
 	public static void printUsage() {
 		System.out.println("Usage: ");
 		System.out.println("$java CipherDriver [-c|-v] <shift amount | key>");
